@@ -29,7 +29,7 @@ export const deleteEvent = async(req, res, next)=>{
         console.log('request', req.body);
         const deleteEventdata = await EventModel.findByIdAndDelete(req.params.id);
         {
-            res.status(200).json(`Event with id ${req.params.id} has been deleted`);
+            res.status(200).send(deleteEventdata);
         }
     } catch (error) {
         next(error)
