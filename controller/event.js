@@ -4,18 +4,18 @@ import { EventModel } from "../models/event";
 export const createEvent = async(req, res)=>{
     try {
         console.log('request', req.body);
-        const addEventdata = await StatementModel.create(req.body);
-        res.status(200).send(addEventdata);
+        const addEventdata = await EventModel.create(req.body);
+        res.status(200).json(addEventdata);
     } catch (error) {
         console.log(error)
     };
 }
 
-export const updateEvent = async(req, res)=>{
+export const updateEvent = async(req, res, next)=>{
     try {
         const status = req.params.eventStatus;
         console.log(status);
-        const updateEventdata = await StatementModel.findByIdAndUpdate(req.params.id, {eventStatus: status});
+        const updateEventdata = await EventModel.findByIdAndUpdate(req.params.id, {eventStatus: status});
         {
             res.status(200).json(updateEventdata);
         }
@@ -24,10 +24,10 @@ export const updateEvent = async(req, res)=>{
     }
 }
 
-export const deleteEvent = async(req, res)=>{
+export const deleteEvent = async(req, res, next)=>{
     try {
         console.log('request', req.body);
-        const deleteEventdata = await StatementModel.findByIdAndDelete(req.params.id);
+        const deleteEventdata = await EventModel.findByIdAndDelete(req.params.id);
         {
             res.status(200).json(`Event with id ${req.param.id} has been deleted`);
         }
