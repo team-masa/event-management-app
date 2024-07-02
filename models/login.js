@@ -1,4 +1,4 @@
-import { Model, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 import { toJSON } from "@reis/mongoose-to-json";
 
 const loginSchema = new Schema({
