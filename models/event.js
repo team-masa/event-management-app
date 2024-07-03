@@ -6,10 +6,13 @@ const eventSchema = new Schema ({
     date:{type: Date, required: true},
     price:{type: Number, required: true},
     location:{type: String, required: true},
-    flierUrl:{type: String}
+    image:{type: String}
+}, {
+   timestamps:true  
 });
 
 eventSchema.plugin(toJSON);
+
 export const EventModel = model('event', eventSchema);
 
 
