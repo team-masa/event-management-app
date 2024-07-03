@@ -6,7 +6,7 @@ export const createEvent = async(req, res, next) =>{
         
         const addEventdata = await EventModel.create({
         ...req.body,
-        flier:req.file.filename
+        image:req.file.filename
     });
         res.status(200).json(addEventdata);
     } catch (error) {
