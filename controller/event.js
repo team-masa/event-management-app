@@ -39,20 +39,29 @@ export const deleteEvent = async (req, res, next) => {
     }
 }
 
-export const getEvent = async (req, res, next) => {
+export const getEvents = async (req, res, next) => {
     try {
         // Get Query Params
         const { limit = 10, skip = 0, filter = "{}", sort = "{}", fields = "{}" } = req.query;
         // Get All Categories From database
-        const getOneEvent = await EventModel
+        const getEvent = await EventModel
             .find(JSON.parse(filter))
             .select(JSON.parse(fields))
             .limit(JSON.parse(limit)) //you can limit it to 10 or any number=>.limit(limit || 10)
             .skip(JSON.parse(skip))
             .sort(JSON.parse(sort))
         //Return response
-        res.status(200).json(getOneEvent);
+        res.status(200).json(getEvent);
     } catch (error) {
         next(error);
     }
-}
+};
+
+export const getEvent = async(req, res, next) => {
+    try {
+   const getOneEvent = await RecipeModel.findById();
+   res.json(getOneEvent);
+    } catch (error) {
+        next(error);
+    }
+};
