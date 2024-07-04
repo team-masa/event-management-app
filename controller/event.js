@@ -59,7 +59,7 @@ export const getEvents = async (req, res, next) => {
 
 export const getEvent = async(req, res, next) => {
     try {
-   const getOneEvent = await RecipeModel.findById();
+   const getOneEvent = await EventModel.findById();
    res.json(getOneEvent);
     } catch (error) {
         next(error);
