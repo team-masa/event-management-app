@@ -42,7 +42,7 @@ export const deleteEvent = async (req, res, next) => {
 export const getEvents = async (req, res, next) => {
     try {
         // Get Query Params
-        const { limit = 10, skip = 0, filter = "{}", sort = "{}", fields = "{}" } = req.query;
+        const { limit = 0, skip = 0, filter = "{}", sort = "{}", fields = "{}" } = req.query;
         // Get All Categories From database
         const getEvent = await EventModel
             .find(JSON.parse(filter))
